@@ -1,0 +1,49 @@
+  <ng-container *ngIf="isSmallScreen$ | async as isSmallScreen else loading">
+    <mat-sidenav-container class="page-list-container">
+      <mat-sidenav [mode]="isSmallScreen.matches ? 'over' : 'side'"
+                  [opened]="!isSmallScreen.matches"
+                  [fixedInViewport]="true"
+                  class="page-list-sidenav"
+                  #pageSidenav>
+        <mat-toolbar color="primary">Projects Management</mat-toolbar>
+        <mat-nav-list>
+          <a mat-list-item
+            *ngFor="let item of leftRouteArr"
+            [routerLink]="item.path"
+            routerLinkActive="active-page">
+            {{ item.title }}
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <mat-toolbar color="accent"> 
+          <ng-container *ngIf="header$ | async as header">
+            {{ header.title }}
+          </ng-container>
+          <span class="nav-spacer"></span>
+          <ng-container *ngIf="(userSrv.curUser$ | async) as curUser">
+            <ng-container *ngIf="curUser?.token?.length !== 0">                       
+              <mat-icon class="nav-icon">account_circle</mat-icon>
+              <button mat-button class="topnav-icon" (click)="logout()">
+                Logout
+              </button>            
+            </ng-container>
+          </ng-container>
+        </mat-toolbar>
+        <div class="mat-typography page-wrapper">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <button *ngIf="isSmallScreen.matches"
+            mat-mini-fab
+            color="primary"
+            class="sidenav-toggle"            
+            (click)="pageSidenav.toggle()">
+      <mat-icon>view_list</mat-icon>
+    </button>
+    <ng-template #loading>
+        Loading stuff...
+    </ng-template>
+  </ng-container>
+

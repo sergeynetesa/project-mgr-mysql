@@ -1,0 +1,46 @@
+<mat-card class="card">
+  <mat-card-title-group *ngIf="(currentUser$ | async) as ut">
+    <mat-card-title>{{userSrv.isAnonymUser(ut) ? 'Anonymous User': ut?.user?.name}} Projects</mat-card-title>
+    <button mat-mini-fab color="primary" (click)="addProject()" *ngIf="!userSrv.isAnonymUser(ut)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-title-group>
+  <mat-card-content>
+  <ng-container *ngIf="(currentProjects$ | async) as projects">
+    <ng-container *ngIf="projectSrv.isProjectsNotEmpty(projects)">  
+      <mat-nav-list>
+        <mat-list-item *ngFor="let project of projects" (click)="editProject(project)">
+        <a mat-line [routerLink]="'/projects/'+ project.id + '/tasks'"
+                    routerLinkActive="active"
+        >
+          <span >{{ project.title }}</span>
+        </a>
+        <button mat-icon-button (click)="editProject(project)">
+          <mat-icon >edit</mat-icon>
+        </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="projects.length === 0">
+          <span >User has no Projects!</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="isProjectsChanged$ | async as r">
+    <ng-container *ngIf="(r.isEnd === false && r.op === 'LOAD')">
+      <div class="spinner-container">          
+        <span>LOADING USER PROJECTS</span>
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="(r.isEnd === false && r.op === 'DELETE')">  
+      <div class="spinner-container">
+        <span>DELETING SELECTED PROJECT</span>
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    </ng-container>
+  </ng-container>
+  
+  </mat-card-content>
+</mat-card>

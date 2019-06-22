@@ -1,0 +1,47 @@
+mat-nav-list {
+  padding-top: 0;
+  a {
+    border-bottom: 1px solid #f3f3f3;
+    &.active-page {
+      background: rgba(#ff4081, 0.6) !important;;
+      color: white !important;;
+    }
+  }
+}
+
+mat-sidenav-container {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.page-wrapper {
+  padding: 0 16px;
+}
+
+.page-list-sidenav {
+  width: 250px;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+}
+
+.sidenav-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  z-index: 4;
+}
+
+.topnav-icon {
+  text-decoration: none;
+  display: flex;
+  color: #fff;
+  padding-left: 5px;
+} 
+
+.sidenav-icon {
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.nav-spacer {
+  flex: 1 1 auto;
+}

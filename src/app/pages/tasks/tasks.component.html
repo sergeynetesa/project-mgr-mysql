@@ -1,0 +1,76 @@
+<ng-container *ngIf="currentUser$ | async"></ng-container>
+<ng-container *ngIf="currentProject$ | async"></ng-container>
+<ng-container *ngIf="curProjectFromRoute$ | async"></ng-container> 
+<mat-card class="card">
+  <mat-card-title-group *ngIf="(activeTaskFilterType$ | async) as activeFilterType">
+    <mat-card-title>Tasks: 
+      <mat-button-toggle-group [value]="activeFilterType"
+                                (change)="activateFilterType($event)" 
+                                name="taskFilterType" aria-label="Task Filter Type">
+        <mat-button-toggle value="all">ALL</mat-button-toggle>
+        <mat-button-toggle value="open">OPEN</mat-button-toggle>
+        <mat-button-toggle value="done">DONE</mat-button-toggle>
+      </mat-button-toggle-group> 
+    </mat-card-title>
+    <button mat-mini-fab color="primary" (click)="addTask()" *ngIf="!userSrv.isAnonymUser(userSrv.curUserWithToken)">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-title-group>
+  <mat-card-content>
+  <ng-container *ngIf="(filteredTasks$ | async) as tasks">
+    <ng-container *ngIf="taskSrv.isTasksNotEmpty(tasks)">  
+      <mat-nav-list>
+        <mat-list-item *ngFor="let task of tasks" (click)="editTask(task)">
+        <a mat-line [routerLink]="'/projects/'+ currentProjectId + '/tasks/'+ task.id"
+                    routerLinkActive="active"
+        >
+        <ng-container *ngIf="task.done; then check; else uncheck"></ng-container>
+        <ng-template #check>
+          <mat-icon mat-list-icon>star</mat-icon>
+        </ng-template>
+        <ng-template #uncheck>
+          <mat-icon mat-list-icon>star_border</mat-icon>
+        </ng-template>
+          <span >{{ task.title }}</span>
+        </a>
+        <button mat-icon-button>
+          <mat-icon (click)="editTask(task)">edit</mat-icon>
+        </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="tasks.length === 0">
+          <span >Selected Project has no Tasks!</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="isTasksChanged$ | async as r">
+    <ng-container *ngIf="(r.isEnd === false && r.op === 'LOAD')">
+      <div class="spinner-container">          
+        <span>LOADING TASKS</span>
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="(r.isEnd === false && r.op === 'DELETE')">  
+      <div class="spinner-container">
+        <span>DELETING SELECTED TASK</span>
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    </ng-container>
+  </ng-container>  
+  </mat-card-content>
+</mat-card>
+
+<!-- 
+    <div>
+      <h5>State.isEnd: {{ r.isEnd  }}</h5>
+      <h5>State.op : {{ r.op }}</h5>
+      <h5>State.opResult : {{ r.opResult }}</h5>
+      <hr/>
+    </div>
+    <div>
+        <h5>isEnd: {{ stateIsEnd  }}</h5>
+        <h5>op : {{ stateOp }}</h5>
+    </div>
+-->
