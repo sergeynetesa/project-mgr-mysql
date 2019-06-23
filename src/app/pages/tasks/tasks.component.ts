@@ -30,7 +30,7 @@ import { TaskService } from 'src/app/shared/services/task.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TasksComponent implements OnInit, OnDestroy {
-  protected currentUser$: Observable<UserWithTokenInterface> = null;
+  public currentUser$: Observable<UserWithTokenInterface> = null;
 
   currentProject$: Observable<ProjectInterface> = null;
   currentProject: ProjectInterface = null;
@@ -48,7 +48,7 @@ export class TasksComponent implements OnInit, OnDestroy {
   activeTaskFilterType$ = this.activeTaskFilterTypeSub$.asObservable();
 
   // --------------------------------------------------------------
-  protected isTasksChanged$: Observable<OpStateInterface> = null;
+  public isTasksChanged$: Observable<OpStateInterface> = null;
   private simpleSnackBarRef: MatSnackBarRef<SimpleSnackBar> = null;
 
   // --------------------------------------------------------------

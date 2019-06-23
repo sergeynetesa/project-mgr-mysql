@@ -62,7 +62,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   get task_desc() { return this.taskFG.get('task_desc'); }
   get task_done() { return this.taskFG.get('task_done'); }
   // --------------------------------------------------------------
-  protected currentUser$: Observable<UserWithTokenInterface> = null;
+  public currentUser$: Observable<UserWithTokenInterface> = null;
 
   currentProject$: Observable<ProjectInterface> = null;
   currentProject: ProjectInterface = null;
@@ -78,7 +78,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   currentTask: TaskInterface = null;
   currentTaskId = '-1';
   // --------------------------------------------------------------
-  protected isTaskChanged$: Observable<OpStateInterface> = null;
+  public isTaskChanged$: Observable<OpStateInterface> = null;
   private onDestroySub$ = new Subject<boolean>();
   private simpleSnackBarRef: MatSnackBarRef<SimpleSnackBar> = null;
 

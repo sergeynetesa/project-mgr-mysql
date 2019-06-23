@@ -59,7 +59,7 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
   // --------------------------------------------------------------
   private simpleSnackBarRef: MatSnackBarRef<SimpleSnackBar> = null;
   // --------------------------------------------------------------
-  protected currentUser$: Observable<UserWithTokenInterface> = null;
+  public currentUser$: Observable<UserWithTokenInterface> = null;
 
   curProjectFromRoute$: Observable<ProjectInterface> = null;
   curProject: ProjectInterface = null;
@@ -67,7 +67,7 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
 
   public curTaskArray$: Observable<TaskInterface[]> = null;
 
-  protected isProjectsChanged$: Observable<IsProjectsChangedInterface> = null;
+  public isProjectsChanged$: Observable<IsProjectsChangedInterface> = null;
 
   // private onDestroySub$ = new Subject<boolean>();
 

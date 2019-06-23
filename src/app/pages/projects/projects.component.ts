@@ -26,12 +26,12 @@ import { ProjectStateService } from 'src/app/shared/services/project-state.servi
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
-  protected currentUser$: Observable<UserWithTokenInterface> = null;
-  protected currentProjects$: Observable<ProjectInterface[]> = null;
+  public currentUser$: Observable<UserWithTokenInterface> = null;
+  public currentProjects$: Observable<ProjectInterface[]> = null;
 
   // --------------------------------------------------------------
   private simpleSnackBarRef: MatSnackBarRef<SimpleSnackBar> = null;
-  protected isProjectsChanged$: Observable<OpStateInterface> = null;
+  public isProjectsChanged$: Observable<OpStateInterface> = null;
   // --------------------------------------------------------------
 
   protected stateIsEnd = '';
