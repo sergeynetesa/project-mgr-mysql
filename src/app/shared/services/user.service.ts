@@ -6,7 +6,7 @@ import { catchError, takeUntil, shareReplay, startWith } from 'rxjs/operators';
 
 export const API_URL = new InjectionToken<string>('API URL', {
   providedIn: 'root',
-  factory: () => 'http://localhost:3000'
+  factory: () => 'https://localhost:3043'
 });
 
 import { UserInterface, WrongUser, UserWithTokenInterface,
