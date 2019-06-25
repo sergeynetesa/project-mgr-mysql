@@ -10,7 +10,7 @@ import { catchError, takeUntil, shareReplay, startWith } from 'rxjs/operators';
 // });
 export const API_URL = new InjectionToken<string>('API URL', {
   providedIn: 'root',
-  factory: () => 'http://server-jwt-1.us-east-2.elasticbeanstalk.com'
+  factory: () => 'https://jsonserverjwt-env.hqzyn7t6mf.us-east-2.elasticbeanstalk.com'
 });
 
 import { UserInterface, WrongUser, UserWithTokenInterface,
