@@ -2,10 +2,19 @@ import { TestBed } from '@angular/core/testing';
 
 import { ProjectService } from './project.service';
 
-describe('ProjectService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+class ProjectServiceStub {
+  // navigateByUrl(url: string) { return url; }
+  open: () => { };
+}
 
-  it('should be created', () => {
+describe('ProjectService', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    providers: [
+      { provide: ProjectService, useClass: ProjectServiceStub }
+    ]
+  }));
+
+  it('01 - should be created', () => {
     const service: ProjectService = TestBed.get(ProjectService);
     expect(service).toBeTruthy();
   });

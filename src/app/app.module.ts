@@ -14,6 +14,7 @@ import { ProjectsModule } from './pages/projects/projects.module';
 import { PrjFormsModule } from './forms/prj-forms.module';
 import { TasksModule } from './pages/tasks/tasks.module';
 
+import { TestsModule } from './tests/tests.module';
 
 import { JwtInterceptor } from './shared/Interceptor/jwt.Interceptor';
 
@@ -30,7 +31,8 @@ import { JwtInterceptor } from './shared/Interceptor/jwt.Interceptor';
     AppRoutingModule,
     ProjectsModule,
     PrjFormsModule,
-    TasksModule
+    TasksModule,
+    TestsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

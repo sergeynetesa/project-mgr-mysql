@@ -88,6 +88,9 @@ export class TasksComponent implements OnInit, OnDestroy {
       }),
     );
     // --------------------
+    if (!this.route.parent) {
+      return;       // test ???
+    }
     this.curProjectFromRoute$ = this.route.parent.params
     .pipe(
       map((pm: Params) => pm.prj_id),

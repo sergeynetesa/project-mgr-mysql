@@ -121,7 +121,7 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
     .pipe(
       map((params: ParamMap) => params.get('prj_id')),
       map((projectId: string) => {
-        if (projectId.length !== 0 && projectId === '0000000') {
+        if (projectId && projectId.length !== 0 && projectId === '0000000') {
           this.prjState  = ProjectStateEnum.ADD;
           this.curProjectId = '';
           return {title: '', description: ''};

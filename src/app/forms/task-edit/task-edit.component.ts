@@ -132,8 +132,8 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     .pipe(
       map((params: ParamMap) => params.get('prj_id')),
       map((projectId: string) => {
-        if (projectId.length !== 0 && projectId === '0') {
-          throw new Error('Route parameter [prj_id] has value 0');
+        if (projectId && projectId.length !== 0 && projectId === '0000000') {
+          throw new Error('Route parameter [prj_id] has value 0000000');
         }
         const curProjects = this.projectSrv.curProjects;
         const curPrj = curProjects.find(project => project.id === projectId);
@@ -152,7 +152,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     .pipe(
       map((params: ParamMap) => params.get('task_id')),
       map((taskId: string) => {
-        if (taskId.length !== 0 && taskId === '0000000') {
+        if (taskId && taskId.length !== 0 && taskId === '0000000') {
           this.taskState  = ProjectStateEnum.ADD;
           this.currentTaskId = '0000000';
           return {
