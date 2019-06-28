@@ -3,7 +3,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { A11yModule } from '@angular/cdk/a11y';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 //
 // Form Controls
 //
@@ -75,6 +80,12 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
 
     LayoutModule,
+    A11yModule,
+    CdkAccordionModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    ScrollingModule,
 
     MatAutocompleteModule,
     MatCheckboxModule,
