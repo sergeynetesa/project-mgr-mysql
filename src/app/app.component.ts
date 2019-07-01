@@ -71,9 +71,6 @@ export class AppComponent implements OnInit {
     this.header$ = this._router.events
     .pipe(
       filter(e => e instanceof NavigationEnd),
-      // tap((e: NavigationEnd) => 
-      //   console.log(`NavigationEnd - url: ${e.url} urlAfterRedirects: ${e.urlAfterRedirects}`)
-      // ),
       map((e: NavigationEnd) => getTopTitleByUrl(e.url, this.routeMap)),
       shareReplay(1)
     );
