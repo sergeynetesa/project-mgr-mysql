@@ -10,7 +10,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { map, filter, shareReplay, startWith } from 'rxjs/operators';
+import { map, filter, shareReplay, startWith, tap } from 'rxjs/operators';
 
 import { PAGE_ROUTES, PageRoutes, PageRoute } from './pages/pages.routes';
 
@@ -71,6 +71,9 @@ export class AppComponent implements OnInit {
     this.header$ = this._router.events
     .pipe(
       filter(e => e instanceof NavigationEnd),
+      // tap((e: NavigationEnd) => 
+      //   console.log(`NavigationEnd - url: ${e.url} urlAfterRedirects: ${e.urlAfterRedirects}`)
+      // ),
       map((e: NavigationEnd) => getTopTitleByUrl(e.url, this.routeMap)),
       shareReplay(1)
     );
@@ -78,7 +81,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userSrv.logoutUser();
-    this._router.navigate(['projects']);
+    this._router.navigateByUrl('/');
   }
 }
 // --------------------------------------------------------------------------------
@@ -100,8 +103,6 @@ export function createLeftRouteArray(routes: PageRoutes) {
   }));
   return flatCopy1;
 }
-
-
 export function getTopTitleByUrl(url: string, routeMapObject: {[key: string]: string}): {title: string} {
   const routeEntryArr = Object.entries(routeMapObject);
   const foundEntry = routeEntryArr.find((entry: [string, string]) =>

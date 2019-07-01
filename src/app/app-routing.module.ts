@@ -14,7 +14,7 @@ const routes: Routes = [];
   imports: [
     RouterModule.forRoot(PROJECT_MANAGER_ROUTES, {
       enableTracing: false,
-      onSameUrlNavigation: 'reload'
+      initialNavigation: true
     })
   ],
   exports: [RouterModule]

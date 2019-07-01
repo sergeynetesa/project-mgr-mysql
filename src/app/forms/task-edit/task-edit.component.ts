@@ -214,16 +214,17 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`OK: Task '${r.message}' has been created!`,
-                'X', {
-                duration: 0,
+                '', {
+                duration: 1500,
                 panelClass: 'mat-snack-bar-container_info'
               });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                  if (res.dismissedByAction) {
-                    this.router.navigate(['projects', this.currentProjectId, 'tasks']);
-                  }
+                  // if (res.dismissedByAction) {
+                  //   this.router.navigate(['projects', this.currentProjectId, 'tasks']);
+                  // }
+                  this.router.navigateByUrl(`/projects/${this.currentProjectId}/tasks`);
                 }
               );
           }
@@ -244,16 +245,17 @@ export class TaskEditComponent implements OnInit, OnDestroy {
             // console.log(`\tPIPE: ProjectsComponent.OnInit() projectSrv.isProjectsChanged$:EDIT OK %O`, r.project);
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`OK: Task '${r.message}' has been updated!`,
-                'X', {
-                duration: 0,
+                '', {
+                duration: 1500,
                 panelClass: 'mat-snack-bar-container_info'
               });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                if (res.dismissedByAction) {
-                  this.router.navigate(['projects', this.currentProjectId, 'tasks']);
-                }
+                // if (res.dismissedByAction) {
+                //   this.router.navigate(['projects', this.currentProjectId, 'tasks']);
+                // }
+                this.router.navigateByUrl(`/projects/${this.currentProjectId}/tasks`);
               }
             );
           }
@@ -272,16 +274,17 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`Selected Task '${r.message}' has been deleted!`,
-              'X', {
-              duration: 0,
+              '', {
+              duration: 1500,
               panelClass: 'mat-snack-bar-container_info'
             });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                  if (res.dismissedByAction) {
-                    this.router.navigate(['projects', this.currentProjectId, 'tasks']);
-                  }
+                  // if (res.dismissedByAction) {
+                  //   this.router.navigate(['projects', this.currentProjectId, 'tasks']);
+                  // }
+                  this.router.navigateByUrl(`/projects/${this.currentProjectId}/tasks`);
                 }
               );
           }

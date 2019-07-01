@@ -183,16 +183,17 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`OK: Project '${(r.project as ProjectInterface).title}' has been created!`,
-                'X', {
-                duration: 0,
+                '', {
+                duration: 1500,
                 panelClass: 'mat-snack-bar-container_info'
               });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                  if (res.dismissedByAction) {
-                    this.router.navigate(['projects/']);
-                  }
+                  // if (res.dismissedByAction) {
+                  //   this.router.navigate(['projects/']);
+                  // }
+                  this.router.navigateByUrl('/projects');
                 }
               );
           }
@@ -211,16 +212,17 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`OK: Project '${(r.project as ProjectInterface).title}' has been updated!`,
-                'X', {
-                duration: 0,
+                '', {
+                duration: 1500,
                 panelClass: 'mat-snack-bar-container_info'
               });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                if (res.dismissedByAction) {
-                  this.router.navigate(['projects']);
-                }
+                // if (res.dismissedByAction) {
+                //   this.router.navigate(['projects']);
+                // }
+                this.router.navigateByUrl('/projects');
               }
             );
           }
@@ -239,16 +241,17 @@ export class ProjectEditComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`OK: Project '${(r.project as ProjectInterface).title}' has been deleted!`,
-              'X', {
-              duration: 0,
+              '', {
+              duration: 1500,
               panelClass: 'mat-snack-bar-container_info'
             });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                if (res.dismissedByAction) {
-                  this.router.navigate(['projects']);
-                }
+                // if (res.dismissedByAction) {
+                //   this.router.navigate(['projects']);
+                // }
+                this.router.navigateByUrl('/projects');
               }
             );
           }

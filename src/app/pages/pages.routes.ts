@@ -91,5 +91,7 @@ export const PAGE_ROUTES: PageRoutes = [
       isLeftNav: true,
       orderId: 6
     }]
-  }
+  },
+  { path: '',   redirectTo: '/projects', pathMatch: 'full', data: [] },
+
 ];

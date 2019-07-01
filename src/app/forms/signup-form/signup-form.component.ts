@@ -58,7 +58,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.returnUrl = '/projects/';
+    this.returnUrl = '/projects';
 
     this.loginFG = this.fb.group({
       login_name: ['', {
@@ -137,16 +137,17 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`User: '${r.userWithToken.user.name}' has been created`,
-              'X', {
-              duration: 0,
+              '', {
+              duration: 1500,
               panelClass: 'mat-snack-bar-container_info'
             });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                if (res.dismissedByAction) {
-                  this.router.navigate([this.returnUrl]);
-                }
+                // if (res.dismissedByAction) {
+                //   this.router.navigate([this.returnUrl]);
+                // }
+                this.router.navigateByUrl(this.returnUrl);
               }
             );
           }
@@ -165,16 +166,17 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           } else if (r.isEnd && r.opResult === ChangeResultEnum.SUCCESS) {
             this.simpleSnackBarRef =
               this.snackBarSrv.open(`User: '${r.userWithToken.user.name}' is logged in`,
-              'X', {
-              duration: 0,
+              '', {
+              duration: 1500,
               panelClass: 'mat-snack-bar-container_info'
             });
             this.simpleSnackBarRef.afterDismissed()
             .subscribe(
               (res: MatSnackBarDismiss) => {
-                if (res.dismissedByAction) {
-                  this.router.navigate([this.returnUrl]);
-                }
+                // if (res.dismissedByAction) {
+                //   this.router.navigate([this.returnUrl]);
+                // }
+                this.router.navigateByUrl(this.returnUrl);
               }
             );
           }
