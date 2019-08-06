@@ -1,0 +1,137 @@
+[
+    {
+      "title": "1.0 SINGUP",
+      "subtitle": "Singup a new user",
+      "src_s": "./assets/about/0.0.Signup_339x258_33.png",
+      "src": "./assets/about/0.0.Signup_1026x782.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Signup new user with name: sergey, email: sergey@net"
+    },
+    {
+      "title": "1.1 LOGIN",
+      "subtitle": "Sign in the existing user",
+      "src_s": "./assets/about/1.0.Login_33.png",
+      "src": "./assets/about/1.0.Login.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Login user with name: sergey, email: sergey@net. Continue on card #6"
+    },
+    {
+      "title": "2. NEW USER HAS NO PROJECTS",
+      "subtitle": "New user has empty project list",
+      "src_s": "./assets/about/0.1.ProjectListEmpty_33.png",
+      "src": "./assets/about/0.1.ProjectListEmpty.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Click round button with 'plus' icon to add new project"
+    },
+    {
+      "title": "3. NEW PROJECT CREATED",
+      "subtitle": "New project has been created",
+      "src_s": "./assets/about/0.2.ProjectCreated_33.png",
+      "src": "./assets/about/0.2.ProjectCreated.png",
+      "src_w": 1026,
+      "src_h": 782,      
+      "content": "User has been create new project"
+    },
+    {
+      "title": "4. LIST WITH NEW PROJECT",
+      "subtitle": "Project list with new user project",
+      "src_s": "./assets/about/0.3.ProjectListWithProject_33.png",
+      "src": "./assets/about/0.3.ProjectListWithProject.png",
+      "src_w": 1026,
+      "src_h": 782,       
+      "content": "Click on row with project title and 'pen' icon to edit project information or click round button with 'plus' to add new project"
+    },
+    {
+      "title": "5. PROJECT HAS BEEN UPDATED",
+      "subtitle": "Updated project information has been saved",
+      "src_s": "./assets/about/0.4.ProjectUpdated_33.png",
+      "src": "./assets/about/0.4.ProjectUpdated.png",
+      "src_w": 1026,
+      "src_h": 782, 
+      "content": "Updated project title and description has been saved. Click round button with 'plus' to add new task in project"
+    },
+    {
+      "title": "6. LIST WITH UPDATED PROJECT",
+      "subtitle": "User project list with updated project",
+      "src_s": "./assets/about/0.5.ProjectListWithUpdatedProject_33.png",
+      "src": "./assets/about/0.5.ProjectListWithUpdatedProject.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Click on row with project title and 'pen' to edit project information or click round button with 'plus' to add new project"
+    },
+    {
+      "title": "7. NEW TASK CREATED",
+      "subtitle": "New task has been created",
+      "src_s": "./assets/about/0.6.TaskCreated_33.png",
+      "src": "./assets/about/0.6.TaskCreated.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "New task has been created"
+    },
+    {
+      "title": "8. MANAGE PROJECT TASKS",
+      "subtitle": "Project add/edit tasks",
+      "src_s": "./assets/about/0.7.ProjectTaskList_33.png",
+      "src": "./assets/about/0.7.ProjectTaskList.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Click on row with task title and 'pen' icon to edit/delete task information or click round button with 'plus' to add new task"
+    },
+    {
+      "title": "9. EDIT TASK",
+      "subtitle": "Edit task information",
+      "src_s": "./assets/about/0.8.TaskUpdated_33.png",
+      "src": "./assets/about/0.8.TaskUpdated.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Add new task title and description and set the task is completed"
+    },
+    {
+      "title": "10. UPDATED TASK LIST",
+      "subtitle": "Project tasks list",
+      "src_s": "./assets/about/0.9.ProjectTaskListUpdated_33.png",
+      "src": "./assets/about/0.9.ProjectTaskListUpdated.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Project updated tasks list"
+    },
+    {
+      "title": "11. DELETE TASK",
+      "subtitle": "Confirm deleting selected task",
+      "src_s": "./assets/about/0.10.TaskDeletedConfirm_33.png",
+      "src": "./assets/about/0.10.TaskDeletedConfirm.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "To confirm task deleting click 'DELETE' button"
+    },
+    {
+      "title": "12. TASK HAS BEEN DELETED",
+      "subtitle": "Selected task has been deleted",
+      "src_s": "./assets/about/0.11.TaskDeleted_33.png",
+      "src": "./assets/about/0.11.TaskDeleted.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Green snackbar inform user that task has been deleted. The snackbar disappear automatically"
+    },
+    {
+      "title": "13. DELETE PROJECT",
+      "subtitle": "Confirm deleting selected project",
+      "src_s": "./assets/about/0.12.ProjectDeletedConfirm_33.png",
+      "src": "./assets/about/0.12.ProjectDeletedConfirm.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "To confirm project deleting click 'DELETE' button"
+    },
+    {
+      "title": "14. PROJECT HAS BEEN DELETED",
+      "subtitle": "Selected project has been deleted",
+      "src_s": "./assets/about/0.13.ProjectDeleted_33.png",
+      "src": "./assets/about/0.13.ProjectDeleted.png",
+      "src_w": 1026,
+      "src_h": 782,
+      "content": "Green snackbar inform user that project has been deleted. The snackbar disappear automatically. App return to card #2"
+    }   
+  ]
