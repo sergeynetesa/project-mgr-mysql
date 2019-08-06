@@ -5,7 +5,7 @@ import { PAGE_ROUTES } from './pages/pages.routes';
 
 export const PROJECT_MANAGER_ROUTES: Routes = [
   ...PAGE_ROUTES
-  , { path: '**', redirectTo: PAGE_ROUTES[0].path, data: PAGE_ROUTES[0].data}
+  // , { path: '**', redirectTo: PAGE_ROUTES[0].path, data: PAGE_ROUTES[0].data}
 ];
 
 const routes: Routes = [];
@@ -14,7 +14,8 @@ const routes: Routes = [];
   imports: [
     RouterModule.forRoot(PROJECT_MANAGER_ROUTES, {
       enableTracing: false,
-      initialNavigation: true
+      initialNavigation: true,
+      useHash: true
     })
   ],
   exports: [RouterModule]

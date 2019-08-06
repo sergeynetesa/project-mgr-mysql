@@ -6,7 +6,7 @@
                   [fixedInViewport]="true"
                   class="page-list-sidenav"
                   #pageSidenav>
-        <mat-toolbar color="primary">Projects Management</mat-toolbar>
+        <mat-toolbar color="primary">Project Management</mat-toolbar>
         <mat-nav-list>
           <a mat-list-item
             *ngFor="let item of leftRouteArr"
@@ -17,19 +17,38 @@
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-        <mat-toolbar color="accent"> 
+        <mat-toolbar color="accent">
           <ng-container *ngIf="header$ | async as header">
             {{ header.title }}
           </ng-container>
           <span class="nav-spacer"></span>
           <ng-container *ngIf="(userSrv.curUser$ | async) as curUser">
             <ng-container *ngIf="curUser?.token?.length !== 0">                       
-              <mat-icon class="nav-icon">account_circle</mat-icon>
+              <!-- <mat-icon class="nav-icon">account_circle</mat-icon> -->
               <button mat-button class="topnav-icon" (click)="logout()">
+                <img class="nav-icon"
+                  src="../../../assets/img/homepage/user-circle-solid_white.svg"
+                  alt="user">
+                <!-- <mat-icon svgIcon="user-circle" class="nav-icon"></mat-icon> -->
                 Logout
               </button>            
             </ng-container>
           </ng-container>
+          <a mat-button *ngIf="isSmallScreen.matches" target="_blank"
+              href="https://github.com/sergeynetesa/project-mgr"
+              aria-label="GitHub Repository">
+            <img class="docs-github-logo"
+              src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+              alt="angular">
+          </a>
+          <a mat-button *ngIf="!isSmallScreen.matches" target="_blank"
+            href="https://github.com/sergeynetesa/project-mgr"
+            aria-label="GitHub Repository">
+            <img class="docs-angular-logo"
+                  src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+                  alt="angular">
+            GitHub
+        </a>
         </mat-toolbar>
         <div class="mat-typography page-wrapper">
           <router-outlet></router-outlet>

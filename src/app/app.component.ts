@@ -6,7 +6,6 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -14,6 +13,10 @@ import { map, filter, shareReplay, startWith, tap } from 'rxjs/operators';
 
 import { PAGE_ROUTES, PageRoutes, PageRoute } from './pages/pages.routes';
 
+// import { DomSanitizer } from '@angular/platform-browser';
+// import { MatIconRegistry } from '@angular/material';
+
+import { ScreenService } from './shared/services/screen.service';
 import { UserService } from './shared/services/user.service';
 
 @Component({
@@ -53,32 +56,32 @@ export class AppComponent implements OnInit {
   public isSmallScreen$: Observable<{matches: boolean}>;
 
   constructor(
-    // tslint:disable-next-line:variable-name
-    private _router: Router,
-    // tslint:disable-next-line:variable-name
-    private _breakpointObserver: BreakpointObserver,
-    protected userSrv: UserService
+    private router: Router,
+    // private iconRegistry: MatIconRegistry,
+    // private sanitizer: DomSanitizer,
+    public screenSrv: ScreenService,
+    public userSrv: UserService
   ) {
+    // iconRegistry.addSvgIcon('user-circle',
+    //   sanitizer.bypassSecurityTrustResourceUrl('assets/img/homepage/user-circle-solid_white.svg'));
   }
 
   ngOnInit() {
-    this.isSmallScreen$ = this._breakpointObserver
-      .observe([Breakpoints.Handset, Breakpoints.Tablet])       // netesa +
-        .pipe(
-          startWith({matches: false}),
-        );
+    this.isSmallScreen$ = this.screenSrv.isSmallScreen$;
 
-    this.header$ = this._router.events
+    this.header$ = this.router.events
     .pipe(
       filter(e => e instanceof NavigationEnd),
       map((e: NavigationEnd) => getTopTitleByUrl(e.url, this.routeMap)),
       shareReplay(1)
     );
+    // this.router.navigateByUrl('/login-signup');
+
   }
 
   logout() {
     this.userSrv.logoutUser();
-    this._router.navigateByUrl('/');
+    this.router.navigateByUrl('/');
   }
 }
 // --------------------------------------------------------------------------------

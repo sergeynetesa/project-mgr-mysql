@@ -9,8 +9,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { DebugElement } from '@angular/core';
 
-import { MaterialModule } from 'src/app/tests/material.module';
-
+import { NgMaterialModule } from '../../shared/ng-material.module';
 
 import { SignupFormComponent } from './signup-form.component';
 
@@ -31,7 +30,7 @@ describe('SignupFormComponent', () => {
         FormsModule,
         ReactiveFormsModule,
 
-        MaterialModule,
+        NgMaterialModule,
       ]
     })
     .compileComponents();
@@ -43,7 +42,7 @@ describe('SignupFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('01 - should create', () => {
+  it('01 - should be created', () => {
     expect(component).toBeTruthy();
   });
 });

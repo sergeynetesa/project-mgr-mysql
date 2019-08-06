@@ -7,6 +7,9 @@ import { SignupFormComponent } from '../forms/signup-form/signup-form.component'
 import { ProjectEditComponent } from '../forms/project-edit/project-edit.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskEditComponent } from '../forms/task-edit/task-edit.component';
+import { AboutComponent } from './about/about.component';
+import { PageNotFoundComponent } from '../page-not-found.component';
+import { AppDetailsComponent } from './app-details/app-details.component';
 
 export interface PageRoute extends Route {
   data: {
@@ -22,6 +25,17 @@ export type PageRoutes = PageRoute[];
 
 export const PAGE_ROUTES: PageRoutes = [
   {
+    path: 'about',
+    component: AppDetailsComponent,
+    data: [{
+      pathRegex: '^\/about$',
+      leftNavTitle: 'About',
+      topNavTitle: 'About Application',
+      isLeftNav: true,
+      orderId: 0
+    }]
+  },
+   {
     path: 'projects',
     component: ProjectsComponent,
     pathMatch: 'full',
@@ -92,6 +106,17 @@ export const PAGE_ROUTES: PageRoutes = [
       orderId: 6
     }]
   },
+  {
+    path: 'help',
+    component: AboutComponent,
+    data: [{
+      pathRegex: '^\/help$',
+      leftNavTitle: 'Help',
+      topNavTitle: 'Help',
+      isLeftNav: true,
+      orderId: 7
+    }]
+  },
   { path: '',   redirectTo: '/projects', pathMatch: 'full', data: [] },
-
+  { path: '**',   component: PageNotFoundComponent, data: [] },
 ];

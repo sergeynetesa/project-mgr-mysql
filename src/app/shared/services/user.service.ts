@@ -6,11 +6,11 @@ import { catchError, takeUntil, shareReplay, startWith } from 'rxjs/operators';
 
 // export const API_URL = new InjectionToken<string>('API URL', {
 //   providedIn: 'root',
-//   factory: () => 'https://localhost:3043'
+//   factory: () => 'http://localhost:3043'
 // });
 export const API_URL = new InjectionToken<string>('API URL', {
   providedIn: 'root',
-  factory: () => 'http://server-jwt-1.us-east-2.elasticbeanstalk.com'
+  factory: () => 'https://o51429.hostde16.fornex.org'
 });
 
 import { UserInterface, WrongUser, UserWithTokenInterface,

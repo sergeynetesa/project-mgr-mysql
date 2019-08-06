@@ -9,7 +9,6 @@ import { MatSnackBar, SimpleSnackBar, MatSnackBarRef,
 
 import { UserInterface, UserWithTokenInterface, IsUserChangedInterface, UserStateEnum } from '../../shared/model/user.interface';
 import { UserService } from '../../shared/services/user.service';
-import { ProjectService } from '../../shared/services/project.service';
 
 import { CustomValidators } from '../custom-validators';
 import { ChangeResultEnum } from 'src/app/shared/model/project.interface';
@@ -52,10 +51,11 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     private router: Router,
     private fb: FormBuilder,
     protected userSrv: UserService,
-    protected projectSrv: ProjectService,
     protected userStateSrv: UserStateService,
     private snackBarSrv: MatSnackBar
-  ) { }
+  ) {
+    userSrv.logoutUser();
+  }
 
   ngOnInit() {
     this.returnUrl = '/projects';
@@ -90,6 +90,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
         updateOn: 'change' }
       ]
     });
+
     this.currentUser$ = this.userSrv.curUser$
       .pipe(
         tap((user: UserWithTokenInterface) => {

@@ -8,8 +8,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgMaterialModule } from './shared/ng-material.module';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent } from './app.component';
-
 import { ProjectsModule } from './pages/projects/projects.module';
 import { PrjFormsModule } from './forms/prj-forms.module';
 import { TasksModule } from './pages/tasks/tasks.module';
@@ -17,11 +15,17 @@ import { TasksModule } from './pages/tasks/tasks.module';
 import { TestsModule } from './tests/tests.module';
 
 import { JwtInterceptor } from './shared/Interceptor/jwt.Interceptor';
+import { AboutModule } from './pages/about/about.module';
 
+import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { AppDetailsComponent } from './pages/app-details/app-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent,
+    AppDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,7 @@ import { JwtInterceptor } from './shared/Interceptor/jwt.Interceptor';
     // FormsModule,
     NgMaterialModule,
     AppRoutingModule,
+    AboutModule,
     ProjectsModule,
     PrjFormsModule,
     TasksModule,

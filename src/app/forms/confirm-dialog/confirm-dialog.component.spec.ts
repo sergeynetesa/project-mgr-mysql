@@ -9,7 +9,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { DebugElement } from '@angular/core';
 
-import { MaterialModule } from 'src/app/tests/material.module';
+import { NgMaterialModule } from '../../shared/ng-material.module';
 
 import { MAT_DIALOG_DATA } from '@angular/material';
 
@@ -32,7 +32,7 @@ describe('ConfirmDialogComponent', () => {
         FormsModule,
         ReactiveFormsModule,
 
-        MaterialModule,
+        NgMaterialModule,
       ],
       providers: [
         // { provide: MatDialogRef, useValue: {} },
@@ -48,7 +48,7 @@ describe('ConfirmDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('01 - should create', () => {
+  it('01 - should be created', () => {
     expect(component).toBeTruthy();
   });
 });

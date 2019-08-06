@@ -1,0 +1,37 @@
+<ng-container *ngIf="winSizes$ | async as winSizes"></ng-container>
+<ng-container *ngIf="isSmallScreen$ | async as isSmallScreen">
+<ng-container *ngIf="items$ | async as items">
+<div class='about-container'>
+
+  <mat-card class="about-card" *ngFor="let item of items">
+    <mat-card-header>
+      <mat-card-title *ngIf="item.title">{{item.title}}</mat-card-title>
+      <mat-card-subtitle *ngIf="item.subtitle">{{item.subtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="img-container">
+      <img mat-card-image class="about-card-image" 
+          src="{{item.src_s}}" 
+          alt="{{item.subtitle}}">
+      <button *ngIf="!isSmallScreen.matches"
+          mat-mini-fab
+          color="primary"
+          class="img-zoom-out"            
+          (click)="openAboutImageDialog(item)">
+        <mat-icon>zoom_out_map</mat-icon>
+      </button>
+    </div>          
+    <mat-card-content>
+      <p *ngIf="item.content">
+        {{item.content}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+
+</div> 
+<ng-template *ngIf="!items">
+  Loading items...
+</ng-template>
+</ng-container>
+</ng-container>

@@ -3,10 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, NG_VALIDATORS } from '@angular/forms';
 
-// import { Uuid4Service } from '../../shared/uuid.service';
-// import { UserService } from '../../shared/user.service';
-
-
 import {
   MatButtonModule,
   MatCardModule,
@@ -26,13 +22,15 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
+import { AboutImageDialogComponent } from './about-image-dialog/about-image-dialog.component';
 
 @NgModule({
   declarations: [
     SignupFormComponent,
     ProjectEditComponent,
     ConfirmDialogComponent,
-    TaskEditComponent
+    TaskEditComponent,
+    AboutImageDialogComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +51,8 @@ import { TaskEditComponent } from './task-edit/task-edit.component';
     MatProgressSpinnerModule,
   ],
   entryComponents: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AboutImageDialogComponent
   ],
   providers: [
     // Uuid4Service,

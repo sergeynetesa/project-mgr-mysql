@@ -1,0 +1,28 @@
+.dyn-card-container1 {
+    width: 100%;
+    display: flex; flex-direction: row; flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dyn-card-container2 {
+    max-width: 90%;
+    max-height: 90%;
+  }
+  
+  .mat-card-header.dyn-card-title{
+    /* justify-content: center; */
+    padding-left: 42px;
+  }
+  
+  .dyn-card-actions {
+    text-align: center;
+  }
+  
+  .spinner-container {
+    position: relative;    
+  } 
+  .spinner-container mat-spinner {
+    position: absolute;
+    left:0; margin-left:auto; right:0; margin-right:auto;
+    top:0; margin-top:auto; bottom:0; margin-bottom:auto;
+  } 

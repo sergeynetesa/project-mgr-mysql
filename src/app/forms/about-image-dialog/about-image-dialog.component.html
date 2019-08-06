@@ -1,0 +1,13 @@
+  <h2 mat-dialog-title>{{item?.subtitle}}</h2>
+  <mat-dialog-content style="max-height: 90vh;">
+  <!-- <mat-dialog-content> -->
+    <div class='spinner-container' style="width: 100%;">
+      
+        <mat-spinner diameter="70" *ngIf="isImgLoading"></mat-spinner>
+      
+        <img src="{{item?.src}}" (load)="imgLoaded()" [ngStyle]="getImgStyle()">
+    </div>
+                            
+    <p> {{item?.content}} </p>
+
+  </mat-dialog-content>
