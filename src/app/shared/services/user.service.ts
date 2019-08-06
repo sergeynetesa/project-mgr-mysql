@@ -10,7 +10,7 @@ import { catchError, takeUntil, shareReplay, startWith } from 'rxjs/operators';
 // });
 export const API_URL = new InjectionToken<string>('API URL', {
   providedIn: 'root',
-  factory: () => 'https://o51429.hostde16.fornex.org'
+  factory: () => 'http://o51429.hostde16.fornex.org'
 });
 
 import { UserInterface, WrongUser, UserWithTokenInterface,
