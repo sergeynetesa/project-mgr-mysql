@@ -56,13 +56,13 @@ export const PAGE_ROUTES: PageRoutes = [
     data: [{
       pathRegex: '^\/projects\/0{7}$',
       leftNavTitle: 'Add New Project',
-      topNavTitle: 'Add New Project',
+      topNavTitle: 'Add Project',
       isLeftNav: false,
       orderId: 2
     }, {
       pathRegex: '^\/projects\/[a-zA-Z0-9_-]{7,14}\/tasks$',
       leftNavTitle: 'Project Edit',
-      topNavTitle: 'Edit Project and View Tasks',
+      topNavTitle: 'Edit Project',
       isLeftNav: false,
       orderId: 2
     }
@@ -82,13 +82,13 @@ export const PAGE_ROUTES: PageRoutes = [
     data: [{
       pathRegex: '^\/projects\/[a-zA-Z0-9_-]{7,14}\/tasks\/0{7}$',
       leftNavTitle: 'Add New Task',
-      topNavTitle: 'Add New Task',
+      topNavTitle: 'Add Task',
       isLeftNav: false,
       orderId: 3
     }, {
       pathRegex: '^\/projects\/[a-zA-Z0-9_-]{7,14}\/tasks\/[a-zA-Z0-9_-]{7,14}$',
       leftNavTitle: 'Task Edit',
-      topNavTitle: 'Edit / Delete Task',
+      topNavTitle: 'Edit Task',
       isLeftNav: false,
       orderId: 3
     }

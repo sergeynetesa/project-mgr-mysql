@@ -1,12 +1,9 @@
-  <!-- <ng-container *ngIf="isSmallScreen$ | async as isSmallScreen else loading"> -->
   <ng-container *ngIf="isSmallScreen$ | async as isSmallScreen">
-    <mat-sidenav-container class="page-list-container">
-      <mat-sidenav [mode]="isSmallScreen.matches ? 'over' : 'side'"
-                  [opened]="!isSmallScreen.matches"
-                  [fixedInViewport]="true"
+    <mat-sidenav-container fullscreen>
+      <mat-sidenav [fixedInViewport]="true"
                   class="page-list-sidenav"
                   #pageSidenav>
-        <mat-toolbar color="primary">Project Management</mat-toolbar>
+        <mat-toolbar color="accent">Menu</mat-toolbar>
         <mat-nav-list>
           <a mat-list-item
             *ngFor="let item of leftRouteArr"
@@ -17,20 +14,34 @@
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-        <mat-toolbar color="accent">
+        <mat-toolbar color="primary">
+          <button mat-icon-button 
+                  matTooltip="Open menu" 
+                  (click)="pageSidenav.toggle()">
+              <mat-icon>menu</mat-icon>
+          </button>
           <ng-container *ngIf="header$ | async as header">
-            {{ header.title }}
+            <span class="page-title">{{ header.title }}</span>
           </ng-container>
           <span class="nav-spacer"></span>
           <ng-container *ngIf="(userSrv.curUser$ | async) as curUser">
             <ng-container *ngIf="curUser?.token?.length !== 0">                       
               <!-- <mat-icon class="nav-icon">account_circle</mat-icon> -->
-              <button mat-button class="topnav-icon" (click)="logout()">
-                <img class="nav-icon"
+              <button mat-button *ngIf="!isSmallScreen.matches" 
+                      class="topnav-icon" (click)="logout()">
+                <!-- <img class="nav-icon"
                   src="../assets/img/homepage/user-circle-solid_white.svg"                  
-                  alt="user">
-                <!-- <mat-icon svgIcon="user-circle" class="nav-icon"></mat-icon> -->
+                  alt="user"> -->
+                <!-- <mat-icon svgIcon="user-circle" class="nav-icon"></mat-icon> -->                
+                <mat-icon aria-hidden="false" aria-label="Logout">exit_to_app</mat-icon>
                 Logout
+              </button>
+              <button mat-button *ngIf="isSmallScreen.matches" 
+                      class="topnav-icon" (click)="logout()">
+                  <!-- <img class="nav-icon"
+                    src="../assets/img/homepage/user-circle-solid_white.svg"                  
+                    alt="user"> -->
+                <mat-icon aria-hidden="false" aria-label="Logout">exit_to_app</mat-icon>    
               </button>            
             </ng-container>
           </ng-container>
@@ -55,13 +66,13 @@
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>
-    <button *ngIf="isSmallScreen.matches"
+    <!-- <button *ngIf="isSmallScreen.matches"
             mat-mini-fab
             color="primary"
             class="sidenav-toggle"            
             (click)="pageSidenav.toggle()">
       <mat-icon>view_list</mat-icon>
-    </button>
+    </button> -->
     <!-- <ng-template #loading>
         Loading stuff...
     </ng-template> -->

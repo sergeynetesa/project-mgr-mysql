@@ -17,9 +17,11 @@ mat-sidenav-container {
 .page-wrapper {
   padding: 0 16px;
 }
-
+.page-title {
+  padding-left: 16px;
+}
 .page-list-sidenav {
-  width: 250px;
+  width: 220px;
   box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
 }
 
