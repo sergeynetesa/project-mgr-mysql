@@ -115,7 +115,7 @@ export class TaskService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.get<any>(`${this.apiUrl}/api/tasks`, {
+    this.http.get<any>(`${this.apiUrl}/api/list_task_by_project`, {
       params: new HttpParams()
           .set('projectId', project.id)
     })
@@ -138,8 +138,8 @@ export class TaskService {
             msg = 'Authentication has been expired!';
             isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
             isProjectsChangedError.message = msg;
-          } else if (status === 400 || status === 500) {
-            msg = err.error ? err.error.message : err.message;
+          } else if (status >= 500) {
+            msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
             isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
             isProjectsChangedError.message = msg;
           } else {
@@ -185,7 +185,7 @@ export class TaskService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.post<TaskInterface>(`${this.apiUrl}/api/tasks`, task)
+    this.http.post<TaskInterface>(`${this.apiUrl}/api/add_task`, task)
       .pipe(
         catchError((err: any): any => {
           let retMsg = 'ERROR';
@@ -206,8 +206,8 @@ export class TaskService {
               msg = 'Authentication has been expired!';
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
-            } else if (status === 400 || status === 500) {
-              msg = err.error ? err.error.message : err.message;
+            } else if (status >= 500) {
+              msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
             } else {
@@ -272,7 +272,7 @@ export class TaskService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.put<TaskInterface>(`${this.apiUrl}/api/tasks/${task.id}`, task)
+    this.http.post<TaskInterface>(`${this.apiUrl}/api/update_task`, task)
       .pipe(
         catchError((err: any): any => {
           let retMsg = 'ERROR';
@@ -293,8 +293,8 @@ export class TaskService {
               msg = 'Authentication has been expired!';
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
-            } else if (status === 400 || status === 500) {
-              msg = err.error ? err.error.message : err.message;
+            } else if (status >= 500) {
+              msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
             } else {
@@ -363,7 +363,7 @@ export class TaskService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.delete<ProjectInterface>(`${this.apiUrl}/api/tasks/${task.id}`)
+    this.http.post<ProjectInterface>(`${this.apiUrl}/api/delete_task`, task)
       .pipe(
         catchError((err: any): any => {
           let retMsg = 'ERROR';
@@ -383,8 +383,8 @@ export class TaskService {
               msg = 'Authentication has been expired!';
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
-            } else if (status === 400 || status === 500) {
-              msg = err.error ? err.error.message : err.message;
+            } else if (status >= 500) {
+              msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
             } else {

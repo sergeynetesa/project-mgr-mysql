@@ -98,7 +98,7 @@ export class ProjectService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.get<any>(`${this.apiUrl}/api/projects`, {
+    this.http.get<any>(`${this.apiUrl}/api/list_projects_by_user`, {
       params: new HttpParams()
           .set('userId', user.id)
     })
@@ -121,21 +121,21 @@ export class ProjectService {
             msg = 'Authentication has been expired!';
             isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
             isProjectsChangedError.message = msg;
-          } else if (status === 400 || status === 500) {
-            msg = err.error ? err.error.message : err.message;
-            isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-            isProjectsChangedError.message = msg;
+          } else if (status >= 500) {
+              msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
+              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+              isProjectsChangedError.message = msg;
           } else {
-            retMsg = 'ERROR';
-            msg = err.statusText;
-            isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-            isProjectsChangedError.message = msg;
+              retMsg = 'ERROR';
+              msg = err.statusText;
+              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+              isProjectsChangedError.message = msg;
           }
         } else {
-          retMsg = 'ERROR';
-          msg = 'UNKNOWN ERROR';
-          isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-          isProjectsChangedError.message = msg;
+            retMsg = 'ERROR';
+            msg = 'UNKNOWN ERROR';
+            isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+            isProjectsChangedError.message = msg;
         }
         if (stateService) {
           stateService.nextIsProjectsChanged(isProjectsChangedError);
@@ -190,7 +190,7 @@ export class ProjectService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.post<ProjectInterface>(`${this.apiUrl}/api/projects`, prj)
+    this.http.post<ProjectInterface>(`${this.apiUrl}/api/add_project`, prj)
       .pipe(
         catchError((err: any): any => {
           let retMsg = 'ERROR';
@@ -210,21 +210,21 @@ export class ProjectService {
               msg = 'Authentication has been expired!';
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
-            } else if (status === 400 || status === 500) {
-              msg = err.error ? err.error.message : err.message;
-              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-              isProjectsChangedError.message = msg;
+            } else if (status >= 500) {
+                msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
+                isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+                isProjectsChangedError.message = msg;
             } else {
-              retMsg = 'ERROR';
-              msg = err.statusText;
-              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-              isProjectsChangedError.message = msg;
+                retMsg = 'ERROR';
+                msg = err.statusText;
+                isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+                isProjectsChangedError.message = msg;
             }
           } else {
-            retMsg = 'ERROR';
-            msg = 'UNKNOWN ERROR';
-            isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-            isProjectsChangedError.message = msg;
+              retMsg = 'ERROR';
+              msg = 'UNKNOWN ERROR';
+              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+              isProjectsChangedError.message = msg;
           }
           if (stateService) {
             stateService.nextIsProjectsChanged(isProjectsChangedError);
@@ -284,7 +284,7 @@ export class ProjectService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.put<ProjectInterface>(`${this.apiUrl}/api/projects/${prj.id}`, prj)
+    this.http.post<ProjectInterface>(`${this.apiUrl}/api/update_project`, prj)
       .pipe(
         catchError((err: any): any => {
           let retMsg = 'ERROR';
@@ -302,25 +302,23 @@ export class ProjectService {
             if (status === 401) {
               retMsg = 'JWT_EXPIRED';
               msg = 'Authentication has been expired!';
-              // this.userSrv.logoutUser();
-              // this.emptyProjects();
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
-            } else if (status === 400 || status === 500) {
-              msg = err.error ? err.error.message : err.message;
-              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-              isProjectsChangedError.message = msg;
+            } else if (status >= 500) {
+                msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
+                isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+                isProjectsChangedError.message = msg;
             } else {
-              retMsg = 'ERROR';
-              msg = err.statusText;
-              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-              isProjectsChangedError.message = msg;
+                retMsg = 'ERROR';
+                msg = err.statusText;
+                isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+                isProjectsChangedError.message = msg;
             }
           } else {
-            retMsg = 'ERROR';
-            msg = 'UNKNOWN ERROR';
-            isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
-            isProjectsChangedError.message = msg;
+              retMsg = 'ERROR';
+              msg = 'UNKNOWN ERROR';
+              isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
+              isProjectsChangedError.message = msg;
           }
           if (stateService) {
             stateService.nextIsProjectsChanged(isProjectsChangedError);
@@ -384,7 +382,7 @@ export class ProjectService {
       };
       stateService.nextIsProjectsChanged(isProjectsChangedEnter);
     }
-    this.http.delete<ProjectInterface>(`${this.apiUrl}/api/projects/${prj.id}`)
+    this.http.post<ProjectInterface>(`${this.apiUrl}/api/delete_project`, prj)
       .pipe(
         catchError((err: any): any => {
           let retMsg = 'ERROR';
@@ -404,8 +402,8 @@ export class ProjectService {
               msg = 'Authentication has been expired!';
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
-            } else if (status === 400 || status === 500) {
-              msg = err.error ? err.error.message : err.message;
+            } else if (status >= 500) {
+              msg = err.error ? (err.error.error ? err.error.error.message : err.message) : err.message;
               isProjectsChangedError.messageType = MessageTypeEnum.ERROR;
               isProjectsChangedError.message = msg;
             } else {
