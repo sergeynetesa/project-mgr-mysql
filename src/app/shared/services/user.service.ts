@@ -4,14 +4,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of, Subject } from 'rxjs';
 import { catchError, takeUntil, shareReplay, startWith } from 'rxjs/operators';
 
-export const API_URL = new InjectionToken<string>('API URL', {
-  providedIn: 'root',
-  factory: () => 'http://localhost:3043'
-});
 // export const API_URL = new InjectionToken<string>('API URL', {
 //   providedIn: 'root',
-//   factory: () => 'http://o51429.hostde16.fornex.org'
+//   factory: () => 'http://localhost:3043'
 // });
+export const API_URL = new InjectionToken<string>('API URL', {
+  providedIn: 'root',
+  factory: () => 'http://o51429.hostde16.fornex.org'
+});
 
 import { UserInterface, WrongUser, UserWithTokenInterface,
           WrongUserWithJWT, UserStateEnum, IsUserChangedInterface } from '../model/user.interface';
@@ -144,8 +144,6 @@ export class UserService {
     this.http.post<UserInterface>(`${this.apiUrl}/auth/login`, userInfo)
     .pipe(
       catchError((err: any): any => {
-        console.log('UserService.login().post().catchError() err: %O', err);
-
         let msg: string;
         let isUserChangedError: IsUserChangedInterface = null;
         if (stateService) {
